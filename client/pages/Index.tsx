@@ -310,11 +310,20 @@ export default function Index() {
                       {getRoomFeatures(room.amenities)}
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" className="flex-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex-1"
+                        onClick={() => handleViewDetails(room)}
+                      >
                         View Details
                       </Button>
                       {isAuthenticated && room.isAvailable ? (
-                        <Button size="sm" className="flex-1">
+                        <Button
+                          size="sm"
+                          className="flex-1"
+                          onClick={() => handleBookNow(room)}
+                        >
                           <Calendar className="h-4 w-4 mr-2" />
                           Book Now
                         </Button>
