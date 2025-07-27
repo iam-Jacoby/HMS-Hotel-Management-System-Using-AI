@@ -114,22 +114,33 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white dark:bg-gray-900 shadow-sm border-b dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Hotel className="h-8 w-8 text-blue-600 mr-3" />
-              <h1 className="text-xl font-semibold text-gray-900">Grandview Hotel</h1>
+              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Grandview Hotel</h1>
             </div>
             <div className="flex items-center space-x-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleTheme}
+                className="p-2"
+              >
+                {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              </Button>
+
               {isAuthenticated ? (
                 <>
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
                     Welcome, {user?.firstName}
                   </span>
-                  <Button variant="outline" size="sm">
-                    My Bookings
-                  </Button>
+                  <Link to="/my-bookings">
+                    <Button variant="outline" size="sm">
+                      My Bookings
+                    </Button>
+                  </Link>
                   <Button variant="outline" size="sm" onClick={handleLogout}>
                     <LogOut className="h-4 w-4 mr-2" />
                     Logout
