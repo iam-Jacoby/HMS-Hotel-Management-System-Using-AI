@@ -37,6 +37,7 @@ export default function Index() {
   const [error, setError] = useState('');
   const [searchQuery, setSearchQuery] = useState<RoomSearchQuery>({});
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const heroImages = [
     'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop',
