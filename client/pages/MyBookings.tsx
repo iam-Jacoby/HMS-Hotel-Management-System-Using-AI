@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, getAuthHeader } from '@/lib/auth';
+import { useTheme } from '@/lib/theme';
 import { Booking, ApiResponse } from '@shared/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Hotel, 
-  Calendar, 
-  Users, 
-  MapPin, 
+import {
+  Hotel,
+  Calendar,
+  Users,
+  MapPin,
   ArrowLeft,
   CreditCard,
-  Clock
+  Clock,
+  LogOut,
+  Sun,
+  Moon,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function MyBookings() {
