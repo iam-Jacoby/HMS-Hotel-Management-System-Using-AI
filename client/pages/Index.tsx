@@ -34,6 +34,14 @@ export default function Index() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [searchQuery, setSearchQuery] = useState<RoomSearchQuery>({});
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const heroImages = [
+    'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=600&fit=crop'
+  ];
 
   useEffect(() => {
     // Redirect admin users to admin dashboard
