@@ -95,3 +95,7 @@ export interface BookingRequest {
 export interface UserProfile extends Omit<User, 'password'> {
   bookingHistory?: Booking[];
 }
+
+export interface DemoResponse {
+  message: string;
+}
