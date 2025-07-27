@@ -1,0 +1,289 @@
+import { RequestHandler } from "express";
+import { Room, Booking, DashboardStats, RoomSearchQuery, BookingRequest, ApiResponse } from "@shared/api";
+
+// Sample hotel data - in a real app, this would be in a database
+let rooms: Room[] = [
+  {
+    _id: "room-1",
+    roomNumber: "101",
+    type: "single",
+    price: 120,
+    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar"],
+    maxOccupancy: 1,
+    isAvailable: true,
+    description: "Comfortable single room perfect for solo travelers",
+    images: ["/placeholder.svg"],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    _id: "room-2",
+    roomNumber: "201",
+    type: "double",
+    price: 180,
+    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service"],
+    maxOccupancy: 2,
+    isAvailable: true,
+    description: "Spacious double room with modern amenities",
+    images: ["/placeholder.svg"],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    _id: "room-3",
+    roomNumber: "301",
+    type: "suite",
+    price: 350,
+    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony"],
+    maxOccupancy: 4,
+    isAvailable: true,
+    description: "Luxury suite with premium amenities and stunning views",
+    images: ["/placeholder.svg"],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    _id: "room-4",
+    roomNumber: "401",
+    type: "deluxe",
+    price: 500,
+    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony", "Kitchen"],
+    maxOccupancy: 6,
+    isAvailable: false,
+    description: "Premium deluxe room with all luxury amenities",
+    images: ["/placeholder.svg"],
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let bookings: Booking[] = [
+  {
+    _id: "booking-1",
+    userId: "customer-1",
+    roomId: "room-4",
+    checkInDate: new Date("2024-01-15"),
+    checkOutDate: new Date("2024-01-20"),
+    numberOfGuests: 2,
+    totalAmount: 2500,
+    status: "confirmed",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+export const getRooms: RequestHandler = (req, res) => {
+  const query: RoomSearchQuery = req.query;
+  
+  let filteredRooms = rooms;
+
+  if (query.type) {
+    filteredRooms = filteredRooms.filter(room => room.type === query.type);
+  }
+
+  if (query.minPrice) {
+    filteredRooms = filteredRooms.filter(room => room.price >= Number(query.minPrice));
+  }
+
+  if (query.maxPrice) {
+    filteredRooms = filteredRooms.filter(room => room.price <= Number(query.maxPrice));
+  }
+
+  if (query.guests) {
+    filteredRooms = filteredRooms.filter(room => room.maxOccupancy >= Number(query.guests));
+  }
+
+  // In a real app, we'd check availability against booking dates
+  if (query.checkIn && query.checkOut) {
+    // For now, just return available rooms
+    filteredRooms = filteredRooms.filter(room => room.isAvailable);
+  }
+
+  res.json({
+    success: true,
+    data: filteredRooms
+  } as ApiResponse<Room[]>);
+};
+
+export const getRoom: RequestHandler = (req, res) => {
+  const room = rooms.find(r => r._id === req.params.id);
+  
+  if (!room) {
+    return res.status(404).json({
+      success: false,
+      message: "Room not found"
+    } as ApiResponse);
+  }
+
+  res.json({
+    success: true,
+    data: room
+  } as ApiResponse<Room>);
+};
+
+export const createRoom: RequestHandler = (req, res) => {
+  const roomData = req.body;
+  
+  const newRoom: Room = {
+    _id: `room-${Date.now()}`,
+    ...roomData,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  };
+
+  rooms.push(newRoom);
+
+  res.status(201).json({
+    success: true,
+    message: "Room created successfully",
+    data: newRoom
+  } as ApiResponse<Room>);
+};
+
+export const updateRoom: RequestHandler = (req, res) => {
+  const roomIndex = rooms.findIndex(r => r._id === req.params.id);
+  
+  if (roomIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Room not found"
+    } as ApiResponse);
+  }
+
+  rooms[roomIndex] = {
+    ...rooms[roomIndex],
+    ...req.body,
+    updatedAt: new Date()
+  };
+
+  res.json({
+    success: true,
+    message: "Room updated successfully",
+    data: rooms[roomIndex]
+  } as ApiResponse<Room>);
+};
+
+export const deleteRoom: RequestHandler = (req, res) => {
+  const roomIndex = rooms.findIndex(r => r._id === req.params.id);
+  
+  if (roomIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Room not found"
+    } as ApiResponse);
+  }
+
+  rooms.splice(roomIndex, 1);
+
+  res.json({
+    success: true,
+    message: "Room deleted successfully"
+  } as ApiResponse);
+};
+
+export const createBooking: RequestHandler = (req: any, res) => {
+  const bookingData: BookingRequest = req.body;
+  const userId = req.user.userId;
+
+  const room = rooms.find(r => r._id === bookingData.roomId);
+  if (!room) {
+    return res.status(404).json({
+      success: false,
+      message: "Room not found"
+    } as ApiResponse);
+  }
+
+  if (!room.isAvailable) {
+    return res.status(400).json({
+      success: false,
+      message: "Room is not available"
+    } as ApiResponse);
+  }
+
+  const checkIn = new Date(bookingData.checkInDate);
+  const checkOut = new Date(bookingData.checkOutDate);
+  const nights = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
+  const totalAmount = nights * room.price;
+
+  const newBooking: Booking = {
+    _id: `booking-${Date.now()}`,
+    userId,
+    roomId: bookingData.roomId,
+    checkInDate: checkIn,
+    checkOutDate: checkOut,
+    numberOfGuests: bookingData.numberOfGuests,
+    totalAmount,
+    status: "pending",
+    specialRequests: bookingData.specialRequests,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  };
+
+  bookings.push(newBooking);
+
+  // Mark room as unavailable (in a real app, this would be more sophisticated)
+  room.isAvailable = false;
+
+  res.status(201).json({
+    success: true,
+    message: "Booking created successfully",
+    data: newBooking
+  } as ApiResponse<Booking>);
+};
+
+export const getBookings: RequestHandler = (req: any, res) => {
+  let userBookings = bookings;
+
+  // If not admin, only show user's own bookings
+  if (req.user.role !== 'admin') {
+    userBookings = bookings.filter(b => b.userId === req.user.userId);
+  }
+
+  // Populate with room and user data
+  const populatedBookings = userBookings.map(booking => ({
+    ...booking,
+    room: rooms.find(r => r._id === booking.roomId)
+  }));
+
+  res.json({
+    success: true,
+    data: populatedBookings
+  } as ApiResponse<Booking[]>);
+};
+
+export const getDashboardStats: RequestHandler = (req, res) => {
+  const totalBookings = bookings.length;
+  const totalRevenue = bookings.reduce((sum, booking) => sum + booking.totalAmount, 0);
+  const availableRooms = rooms.filter(r => r.isAvailable).length;
+  const totalRooms = rooms.length;
+  const recentBookings = bookings
+    .slice(-5)
+    .map(booking => ({
+      ...booking,
+      room: rooms.find(r => r._id === booking.roomId)
+    }));
+
+  // Calculate monthly revenue (current month)
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+  const monthlyRevenue = bookings
+    .filter(booking => {
+      const bookingDate = new Date(booking.createdAt);
+      return bookingDate.getMonth() === currentMonth && bookingDate.getFullYear() === currentYear;
+    })
+    .reduce((sum, booking) => sum + booking.totalAmount, 0);
+
+  const stats: DashboardStats = {
+    totalBookings,
+    totalRevenue,
+    availableRooms,
+    totalRooms,
+    recentBookings,
+    monthlyRevenue
+  };
+
+  res.json({
+    success: true,
+    data: stats
+  } as ApiResponse<DashboardStats>);
+};
