@@ -195,12 +195,12 @@ export default function Index() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="roomType">Room Type</Label>
-                <Select value={searchQuery.type || ''} onValueChange={(value) => setSearchQuery(prev => ({ ...prev, type: value }))}>
+                <Select value={searchQuery.type || 'all'} onValueChange={(value) => setSearchQuery(prev => ({ ...prev, type: value === 'all' ? undefined : value }))}>
                   <SelectTrigger>
                     <SelectValue placeholder="Any type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Any Type</SelectItem>
+                    <SelectItem value="all">Any Type</SelectItem>
                     <SelectItem value="single">Single</SelectItem>
                     <SelectItem value="double">Double</SelectItem>
                     <SelectItem value="suite">Suite</SelectItem>
