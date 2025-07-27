@@ -53,6 +53,17 @@ export default function Index() {
     fetchRooms();
   }, [user, navigate]);
 
+  useEffect(() => {
+    // Rotate hero background images every 5 seconds
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % heroImages.length
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const fetchRooms = async (query: RoomSearchQuery = {}) => {
     try {
       const params = new URLSearchParams();
