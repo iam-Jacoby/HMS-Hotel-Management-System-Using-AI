@@ -414,7 +414,7 @@ export default function Index() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Perfect for romantic escapes and city breaks. Includes complimentary breakfast and late checkout.
                 </p>
-                <Button variant="outline" className="w-full">Learn More</Button>
+                <Button variant="outline" className="w-full" onClick={() => handleOfferClick('Weekend Getaway')}>Learn More</Button>
               </CardContent>
             </Card>
 
@@ -427,7 +427,7 @@ export default function Index() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Stay 5+ nights and save up to 30%. Includes free WiFi, parking, and meeting room access.
                 </p>
-                <Button variant="outline" className="w-full">Learn More</Button>
+                <Button variant="outline" className="w-full" onClick={() => handleOfferClick('Business Traveler')}>Learn More</Button>
               </CardContent>
             </Card>
 
@@ -440,7 +440,7 @@ export default function Index() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Plan ahead and save 20% on your stay. Non-refundable rates with the best guaranteed prices.
                 </p>
-                <Button variant="outline" className="w-full">Learn More</Button>
+                <Button variant="outline" className="w-full" onClick={() => handleOfferClick('Early Bird Special')}>Learn More</Button>
               </CardContent>
             </Card>
           </div>
