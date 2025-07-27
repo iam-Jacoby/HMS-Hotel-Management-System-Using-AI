@@ -120,6 +120,17 @@ export default function Index() {
             <div className="flex items-center">
               <Hotel className="h-8 w-8 text-blue-600 mr-3" />
               <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Grandview Hotel</h1>
+              <nav className="hidden md:flex ml-8 space-x-6">
+                <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  Home
+                </Link>
+                <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  About
+                </Link>
+                <Link to="/contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                  Contact
+                </Link>
+              </nav>
             </div>
             <div className="flex items-center space-x-4">
               <Button
