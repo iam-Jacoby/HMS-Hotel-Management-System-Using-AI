@@ -130,6 +130,10 @@ export default function Index() {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
+  const handleOfferClick = (offerType: string) => {
+    alert(`${offerType} offer details:\n\nFor more information and to book this special offer, please contact our reservations team at +1 (555) 123-4567 or visit our front desk.`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
