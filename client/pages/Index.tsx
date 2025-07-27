@@ -251,7 +251,7 @@ export default function Index() {
 
         {/* Rooms Section */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Rooms</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Available Rooms</h2>
           
           {loading ? (
             <div className="text-center py-12">
