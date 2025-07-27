@@ -23,11 +23,22 @@ import {
 } from 'lucide-react';
 
 export default function MyBookings() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   useEffect(() => {
     if (!isAuthenticated) {
