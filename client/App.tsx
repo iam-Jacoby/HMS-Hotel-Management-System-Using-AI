@@ -7,10 +7,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/lib/auth";
+import { ThemeProvider } from "@/lib/theme";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminDashboard from "./pages/AdminDashboard";
+import MyBookings from "./pages/MyBookings";
+import RoomDetails from "./pages/RoomDetails";
+import BookingForm from "./pages/BookingForm";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
