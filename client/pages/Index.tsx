@@ -347,8 +347,8 @@ export default function Index() {
         {/* Features Section */}
         <section className="py-16 bg-white dark:bg-gray-800 rounded-lg">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Grandview Hotel?</h2>
-            <p className="text-lg text-gray-600">Experience the finest amenities and services</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Grandview Hotel?</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Experience the finest amenities and services</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
