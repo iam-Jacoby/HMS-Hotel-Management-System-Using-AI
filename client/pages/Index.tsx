@@ -69,21 +69,32 @@ export default function Index() {
 
   const fetchRooms = async (query: RoomSearchQuery = {}) => {
     try {
+      setError(''); // Clear previous errors
       const params = new URLSearchParams();
       Object.entries(query).forEach(([key, value]) => {
         if (value) params.append(key, value.toString());
       });
 
       const response = await fetch(`/api/rooms?${params.toString()}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data: ApiResponse<Room[]> = await response.json();
-      
+
       if (data.success && data.data) {
         setRooms(data.data);
       } else {
         setError(data.message || 'Failed to load rooms');
       }
     } catch (err) {
-      setError('Network error. Please try again.');
+      console.error('Fetch rooms error:', err);
+      if (err instanceof Error) {
+        setError(`Failed to load rooms: ${err.message}`);
+      } else {
+        setError('Network error. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
