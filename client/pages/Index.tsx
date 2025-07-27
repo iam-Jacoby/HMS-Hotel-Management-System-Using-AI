@@ -23,7 +23,9 @@ import {
   Star,
   Search,
   Sun,
-  Moon
+  Moon,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function Index() {
