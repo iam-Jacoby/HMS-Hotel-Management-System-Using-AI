@@ -198,7 +198,7 @@ export default function Index() {
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-30' : 'opacity-0'
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <img
@@ -208,6 +208,9 @@ export default function Index() {
             />
           </div>
         ))}
+
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50 z-5"></div>
 
         {/* Content Overlay */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
