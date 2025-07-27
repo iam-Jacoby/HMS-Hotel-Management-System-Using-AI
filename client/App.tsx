@@ -15,6 +15,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import MyBookings from "./pages/MyBookings";
 import RoomDetails from "./pages/RoomDetails";
 import BookingForm from "./pages/BookingForm";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
