@@ -691,7 +691,7 @@ export default function Index() {
             <span className="text-lg font-semibold">Grandview Hotel</span>
           </div>
           <p className="text-gray-400">
-            © 2024 Grandview Hotel. All rights reserved.
+            © 2025 Grandview Hotel. All rights reserved.
           </p>
         </div>
       </footer>
