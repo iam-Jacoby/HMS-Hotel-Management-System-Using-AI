@@ -355,8 +355,8 @@ export default function Index() {
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Wifi className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Free WiFi</h3>
-              <p className="text-gray-600">High-speed internet access throughout the hotel</p>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">Free WiFi</h3>
+              <p className="text-gray-600 dark:text-gray-300">High-speed internet access throughout the hotel</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
