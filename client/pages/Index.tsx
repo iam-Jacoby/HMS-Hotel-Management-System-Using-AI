@@ -192,15 +192,32 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 overflow-hidden">
+        {/* Background Images */}
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-30' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={image}
+              alt={`Hotel Background ${index + 1}`}
+              className="w-full h-full object-cover filter blur-sm"
+            />
+          </div>
+        ))}
+
+        {/* Content Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
             Welcome to Grandview Hotel
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90">
+          <p className="text-xl md:text-2xl mb-8 opacity-90 drop-shadow-md">
             Experience luxury and comfort in the heart of the city
           </p>
-          <div className="flex items-center justify-center text-lg mb-8">
+          <div className="flex items-center justify-center text-lg mb-8 drop-shadow-md">
             <MapPin className="h-5 w-5 mr-2" />
             <span>Downtown Business District • 5-Star Rating</span>
           </div>
