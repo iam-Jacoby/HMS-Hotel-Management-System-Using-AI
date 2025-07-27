@@ -192,7 +192,7 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 overflow-hidden">
+      <section className="relative text-white py-16 overflow-hidden">
         {/* Background Images */}
         {heroImages.map((image, index) => (
           <div
