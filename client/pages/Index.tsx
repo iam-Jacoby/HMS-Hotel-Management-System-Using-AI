@@ -422,9 +422,22 @@ export default function Index() {
               <div className="text-lg">Loading rooms...</div>
             </div>
           ) : error ? (
-            <Alert variant="destructive" className="max-w-md mx-auto">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
+            <div className="max-w-md mx-auto">
+              <Alert variant="destructive" className="mb-4">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+              <div className="text-center">
+                <Button
+                  onClick={() => {
+                    setLoading(true);
+                    fetchRooms();
+                  }}
+                  variant="outline"
+                >
+                  Try Again
+                </Button>
+              </div>
+            </div>
           ) : rooms.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600">No rooms found matching your criteria.</p>
