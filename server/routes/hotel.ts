@@ -12,7 +12,7 @@ let rooms: Room[] = [
     maxOccupancy: 1,
     isAvailable: true,
     description: "Comfortable single room perfect for solo travelers",
-    images: ["/placeholder.svg"],
+    images: ["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=300&fit=crop"],
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -25,7 +25,7 @@ let rooms: Room[] = [
     maxOccupancy: 2,
     isAvailable: true,
     description: "Spacious double room with modern amenities",
-    images: ["/placeholder.svg"],
+    images: ["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500&h=300&fit=crop"],
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -38,7 +38,7 @@ let rooms: Room[] = [
     maxOccupancy: 4,
     isAvailable: true,
     description: "Luxury suite with premium amenities and stunning views",
-    images: ["/placeholder.svg"],
+    images: ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop"],
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -51,7 +51,7 @@ let rooms: Room[] = [
     maxOccupancy: 6,
     isAvailable: false,
     description: "Premium deluxe room with all luxury amenities",
-    images: ["/placeholder.svg"],
+    images: ["https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=300&fit=crop"],
     createdAt: new Date(),
     updatedAt: new Date()
   }
