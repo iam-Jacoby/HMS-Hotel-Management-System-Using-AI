@@ -17,6 +17,7 @@ import RoomDetails from "./pages/RoomDetails";
 import BookingForm from "./pages/BookingForm";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import SpecialOffers from "./pages/SpecialOffers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
