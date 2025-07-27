@@ -301,14 +301,14 @@ export default function MyBookings() {
 
                       {booking.specialRequests && (
                         <div className="border-t pt-4">
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-gray-600 dark:text-gray-300">
                             <div className="font-medium mb-1">Special Requests</div>
                             <div>{booking.specialRequests}</div>
                           </div>
                         </div>
                       )}
 
-                      <div className="flex items-center text-xs text-gray-500">
+                      <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
                         <Clock className="h-3 w-3 mr-1" />
                         Booked on {formatDate(booking.createdAt)}
                       </div>
