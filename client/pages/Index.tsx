@@ -53,7 +53,12 @@ export default function Index() {
       return;
     }
 
-    fetchRooms();
+    // Add a small delay to ensure the server is ready
+    const timer = setTimeout(() => {
+      fetchRooms();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [user, navigate]);
 
   useEffect(() => {
