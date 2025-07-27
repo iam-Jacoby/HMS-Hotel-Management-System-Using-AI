@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, getAuthHeader } from '@/lib/auth';
+import { useTheme } from '@/lib/theme';
 import { Room, ApiResponse, RoomSearchQuery } from '@shared/api';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,18 +10,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Hotel, 
-  MapPin, 
-  Users, 
-  Wifi, 
-  Car, 
-  Coffee, 
+import {
+  Hotel,
+  MapPin,
+  Users,
+  Wifi,
+  Car,
+  Coffee,
   Utensils,
   LogOut,
   Calendar,
   Star,
-  Search
+  Search,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export default function Index() {
