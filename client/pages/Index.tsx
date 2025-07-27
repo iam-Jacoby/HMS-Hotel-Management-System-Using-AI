@@ -96,7 +96,7 @@ export default function Index() {
   };
 
   const handleViewDetails = (room: Room) => {
-    alert(`Room Details:\n\nRoom ${room.roomNumber} - ${room.type}\nPrice: $${room.price}/night\nMax Occupancy: ${room.maxOccupancy} guests\n\nDescription: ${room.description}\n\nAmenities: ${room.amenities.join(', ')}`);
+    navigate(`/room/${room._id}`);
   };
 
   const handleBookNow = (room: Room) => {
@@ -104,28 +104,11 @@ export default function Index() {
       navigate('/login');
       return;
     }
+    navigate(`/book/${room._id}`);
+  };
 
-    if (!room.isAvailable) {
-      alert('This room is not available for booking.');
-      return;
-    }
-
-    const checkIn = searchQuery.checkIn || '';
-    const checkOut = searchQuery.checkOut || '';
-    const guests = searchQuery.guests || 1;
-
-    if (!checkIn || !checkOut) {
-      alert('Please select check-in and check-out dates before booking.');
-      return;
-    }
-
-    const nights = Math.ceil((new Date(checkOut).getTime() - new Date(checkIn).getTime()) / (1000 * 60 * 60 * 24));
-    const total = nights * room.price;
-
-    if (confirm(`Book Room ${room.roomNumber}?\n\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests: ${guests}\nNights: ${nights}\nTotal: $${total}\n\nConfirm booking?`)) {
-      // Here you would normally call the booking API
-      alert('Booking confirmed! (This would normally process the booking)');
-    }
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
