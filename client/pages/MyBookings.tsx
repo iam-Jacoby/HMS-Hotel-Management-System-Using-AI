@@ -269,28 +269,28 @@ export default function MyBookings() {
                     {/* Booking Details */}
                     <div className="md:col-span-2 space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                           <Calendar className="h-4 w-4 mr-2" />
                           <div>
                             <div className="font-medium">Check-in</div>
                             <div>{formatDate(booking.checkInDate)}</div>
                           </div>
                         </div>
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                           <Calendar className="h-4 w-4 mr-2" />
                           <div>
                             <div className="font-medium">Check-out</div>
                             <div>{formatDate(booking.checkOutDate)}</div>
                           </div>
                         </div>
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                           <Users className="h-4 w-4 mr-2" />
                           <div>
                             <div className="font-medium">Guests</div>
                             <div>{booking.numberOfGuests} guest{booking.numberOfGuests > 1 ? 's' : ''}</div>
                           </div>
                         </div>
-                        <div className="flex items-center text-sm text-gray-600">
+                        <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
                           <CreditCard className="h-4 w-4 mr-2" />
                           <div>
                             <div className="font-medium">Total Amount</div>
