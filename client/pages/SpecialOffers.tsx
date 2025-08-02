@@ -372,7 +372,7 @@ export default function SpecialOffers() {
                 Contact Us
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-blue-800">
+            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-blue-800 bg-transparent">
               Call +1 (555) 123-4567
             </Button>
           </div>
