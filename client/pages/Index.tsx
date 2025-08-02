@@ -142,7 +142,15 @@ export default function Index() {
       navigate('/login');
       return;
     }
-    navigate(`/book/${room._id}`);
+
+    // Pass search query parameters to booking form
+    const params = new URLSearchParams();
+    if (searchQuery.checkIn) params.append('checkIn', searchQuery.checkIn);
+    if (searchQuery.checkOut) params.append('checkOut', searchQuery.checkOut);
+    if (searchQuery.guests) params.append('guests', searchQuery.guests.toString());
+
+    const queryString = params.toString();
+    navigate(`/book/${room._id}${queryString ? `?${queryString}` : ''}`);
   };
 
   const toggleTheme = () => {
