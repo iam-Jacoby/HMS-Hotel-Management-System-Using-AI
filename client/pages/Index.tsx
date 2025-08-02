@@ -585,18 +585,20 @@ export default function Index() {
               </Card>
             </AnimatedCard>
 
-            <Card className="overflow-hidden flex flex-col h-full">
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">Early Bird Special</h3>
-                <p className="text-orange-100">Book 30 days ahead</p>
-              </div>
-              <CardContent className="p-6 flex-1 flex flex-col">
-                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
-                  Plan ahead and save 20% on your stay. Non-refundable rates with the best guaranteed prices.
-                </p>
-                <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
-              </CardContent>
-            </Card>
+            <AnimatedCard animation="fadeInRight" delay={200}>
+              <Card className="overflow-hidden flex flex-col h-full">
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Early Bird Special</h3>
+                  <p className="text-orange-100">Book 30 days ahead</p>
+                </div>
+                <CardContent className="p-6 flex-1 flex flex-col">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
+                    Plan ahead and save 20% on your stay. Non-refundable rates with the best guaranteed prices.
+                  </p>
+                  <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
           </div>
         </section>
 
