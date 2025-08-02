@@ -176,12 +176,12 @@ export default function Index() {
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="flex items-center">
+              <button onClick={handleHomeClick} className="flex items-center">
                 <Hotel className="h-8 w-8 text-blue-600 mr-3" />
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Grandview Hotel
                 </h1>
-              </Link>
+              </button>
               <nav className="hidden md:flex ml-8 space-x-6">
                 <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Home
