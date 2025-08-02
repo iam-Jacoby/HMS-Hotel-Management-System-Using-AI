@@ -642,30 +642,32 @@ export default function Index() {
             <p className="text-lg text-gray-600 dark:text-gray-300">Real experiences from our valued guests</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  "Exceptional service and luxurious accommodations. The staff went above and beyond to make our anniversary special.
-                  We'll definitely be returning!"
-                </p>
-                <div className="flex items-center">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616b612b587?w=50&h=50&fit=crop&crop=face"
-                    alt="Sarah M."
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">Sarah M.</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Verified Guest</p>
+            <AnimatedCard animation="fadeInUp" delay={0}>
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    "Exceptional service and luxurious accommodations. The staff went above and beyond to make our anniversary special.
+                    We'll definitely be returning!"
+                  </p>
+                  <div className="flex items-center">
+                    <img
+                      src="https://images.unsplash.com/photo-1494790108755-2616b612b587?w=50&h=50&fit=crop&crop=face"
+                      alt="Sarah M."
+                      className="w-12 h-12 rounded-full mr-4 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900 dark:text-white">Sarah M.</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Verified Guest</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
 
             <Card>
               <CardContent className="p-6">
