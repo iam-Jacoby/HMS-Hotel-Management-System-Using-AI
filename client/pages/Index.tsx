@@ -183,9 +183,9 @@ export default function Index() {
                 </h1>
               </button>
               <nav className="hidden md:flex ml-8 space-x-6">
-                <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <button onClick={handleHomeClick} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Home
-                </Link>
+                </button>
                 <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   About
                 </Link>
