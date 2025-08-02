@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useAuth, getAuthHeader } from '@/lib/auth';
-import { DashboardStats, ApiResponse } from '@shared/api';
+import { useTheme } from '@/lib/theme';
+import { DashboardStats, ApiResponse, Booking } from '@shared/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Hotel, 
-  Users, 
-  Calendar, 
-  DollarSign, 
-  BedDouble, 
+import {
+  Hotel,
+  Users,
+  Calendar,
+  DollarSign,
+  BedDouble,
   TrendingUp,
   LogOut,
   Plus,
-  Settings
+  Settings,
+  Sun,
+  Moon,
+  Check,
+  X
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
