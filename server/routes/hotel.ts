@@ -65,7 +65,7 @@ const generateRooms = (): Room[] => {
     }
   });
 
-  // Mark the original room-4 (now room-37) as unavailable
+  // Mark room-37 (deluxe room 407) as unavailable due to existing booking
   const room37 = generatedRooms.find(room => room._id === 'room-37');
   if (room37) {
     room37.isAvailable = false;
