@@ -726,15 +726,63 @@ export default function Index() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <Hotel className="h-6 w-6 mr-2" />
-            <span className="text-lg font-semibold">Grandview Hotel</span>
+      <footer className="bg-gray-900 text-white py-12 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* Hotel Info */}
+            <div>
+              <div className="flex items-center mb-4">
+                <Hotel className="h-6 w-6 mr-2" />
+                <span className="text-lg font-semibold">Grandview Hotel</span>
+              </div>
+              <p className="text-gray-400 text-sm mb-4">
+                Experience luxury and comfort in the heart of the city since 1985.
+              </p>
+              <div className="flex items-center text-sm text-gray-400">
+                <MapPin className="h-4 w-4 mr-2" />
+                <span>Downtown Business District</span>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
+                <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+                <li><Link to="/special-offers" className="text-gray-400 hover:text-white transition-colors">Special Offers</Link></li>
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Services</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>Room Service</li>
+                <li>Concierge</li>
+                <li>Valet Parking</li>
+                <li>Business Center</li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-white font-semibold mb-4">Contact</h3>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>+1 (555) 123-4567</li>
+                <li>info@grandviewhotel.com</li>
+                <li>123 Business District Ave</li>
+                <li>Metropolitan City, MC 12345</li>
+              </ul>
+            </div>
           </div>
-          <p className="text-gray-400">
-            © 2025 Grandview Hotel. All rights reserved.
-          </p>
+
+          <div className="border-t border-gray-700 pt-6 text-center">
+            <p className="text-gray-400 text-sm">
+              © 2025 Grandview Hotel. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
