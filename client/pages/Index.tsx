@@ -582,27 +582,29 @@ export default function Index() {
 
         {/* About Section */}
         <section className="mb-16 py-16 bg-white dark:bg-gray-800 rounded-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About Grandview Hotel</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Since 1985, Grandview Hotel has been the epitome of luxury and hospitality in the downtown business district.
-                Our commitment to excellence and attention to detail ensures every guest enjoys an unforgettable experience.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
-                With 150 elegantly appointed rooms and suites, world-class dining, and exceptional service,
-                we continue to set the standard for luxury hospitality in the heart of the city.
-              </p>
-              <Link to="/about">
-                <Button>Learn More About Us</Button>
-              </Link>
-            </div>
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop"
-                alt="Hotel Lobby"
-                className="rounded-lg shadow-xl"
-              />
+          <div className="px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About Grandview Hotel</h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                  Since 1985, Grandview Hotel has been the epitome of luxury and hospitality in the downtown business district.
+                  Our commitment to excellence and attention to detail ensures every guest enjoys an unforgettable experience.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 mb-8">
+                  With 150 elegantly appointed rooms and suites, world-class dining, and exceptional service,
+                  we continue to set the standard for luxury hospitality in the heart of the city.
+                </p>
+                <Link to="/about">
+                  <Button>Learn More About Us</Button>
+                </Link>
+              </div>
+              <div className="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop"
+                  alt="Hotel Lobby"
+                  className="rounded-lg shadow-xl"
+                />
+              </div>
             </div>
           </div>
         </section>
