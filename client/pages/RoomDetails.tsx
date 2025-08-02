@@ -286,10 +286,10 @@ export default function RoomDetails() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl capitalize">
+                    <CardTitle className="text-2xl capitalize text-gray-900 dark:text-white">
                       {room.type} Room {room.roomNumber}
                     </CardTitle>
-                    <CardDescription className="flex items-center mt-2">
+                    <CardDescription className="flex items-center mt-2 text-gray-600 dark:text-gray-300">
                       <Users className="h-4 w-4 mr-1" />
                       Up to {room.maxOccupancy} guests
                     </CardDescription>
