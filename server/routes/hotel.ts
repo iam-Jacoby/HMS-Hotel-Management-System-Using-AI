@@ -81,7 +81,7 @@ let bookings: Booking[] = [
   {
     _id: "booking-1",
     userId: "customer-1",
-    roomId: "room-4",
+    roomId: "room-37", // This corresponds to deluxe room 407 (4th floor, 7th room)
     checkInDate: new Date("2024-01-15"),
     checkOutDate: new Date("2024-01-20"),
     numberOfGuests: 2,
