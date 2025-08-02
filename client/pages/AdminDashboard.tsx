@@ -178,17 +178,17 @@ export default function AdminDashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h2>
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Actions</h2>
           <div className="flex flex-wrap gap-4">
-            <Button>
+            <Button onClick={handleAddRoom}>
               <Plus className="h-4 w-4 mr-2" />
               Add New Room
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" onClick={handleManageUsers}>
               <Users className="h-4 w-4 mr-2" />
               Manage Users
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" onClick={handleSettings}>
               <Settings className="h-4 w-4 mr-2" />
               Settings
             </Button>
