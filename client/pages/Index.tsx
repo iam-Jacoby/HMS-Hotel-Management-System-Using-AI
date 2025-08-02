@@ -352,8 +352,9 @@ export default function Index() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Search Section */}
-        <Card className="mb-8">
-          <CardHeader>
+        <AnimatedCard animation="fadeInUp" delay={100}>
+          <Card className="mb-8">
+            <CardHeader>
             <CardTitle className="flex items-center">
               <Search className="h-5 w-5 mr-2" />
               Find Your Perfect Room
@@ -422,7 +423,8 @@ export default function Index() {
               </div>
             </div>
           </CardContent>
-        </Card>
+          </Card>
+        </AnimatedCard>
 
         {/* Rooms Section */}
         <div className="mb-8">
