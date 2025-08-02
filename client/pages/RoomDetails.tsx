@@ -361,7 +361,7 @@ export default function RoomDetails() {
 
           {/* Booking Card */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24">
+            <Card className="sticky top-24 dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
                 <CardTitle className="text-center">
                   <div className="text-3xl font-bold text-blue-600">${room.price}</div>
