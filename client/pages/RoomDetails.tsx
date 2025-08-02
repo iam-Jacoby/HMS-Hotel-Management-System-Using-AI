@@ -96,8 +96,8 @@ export default function RoomDetails() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-lg">Loading room details...</div>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-lg text-gray-900 dark:text-white">Loading room details...</div>
       </div>
     );
   }
