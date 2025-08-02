@@ -456,10 +456,10 @@ export default function Index() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rooms.map((room) => (
-                <Card key={room._id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <Card key={room._id} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
                   <div className="aspect-video bg-gray-200 relative">
-                    <img 
-                      src={room.images[0] || "/placeholder.svg"} 
+                    <img
+                      src={room.images[0] || "/placeholder.svg"}
                       alt={`Room ${room.roomNumber}`}
                       className="w-full h-full object-cover"
                     />
@@ -488,14 +488,14 @@ export default function Index() {
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-sm text-gray-600 mb-4 flex-1">
                       {room.description}
                     </p>
-                    <div className="space-y-2 mb-4">
+                    <div className="space-y-2 mb-6">
                       {getRoomFeatures(room.amenities)}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 mt-auto">
                       <Button
                         variant="outline"
                         size="sm"
