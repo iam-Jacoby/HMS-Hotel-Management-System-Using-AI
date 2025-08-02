@@ -282,7 +282,7 @@ export default function RoomDetails() {
             </div>
 
             {/* Room Info */}
-            <Card>
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
