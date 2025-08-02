@@ -126,6 +126,15 @@ export default function BookingForm() {
     setSubmitting(true);
 
     try {
+      const authHeaders = getAuthHeader();
+
+      // Check if we have a token
+      if (!authHeaders.Authorization) {
+        setError('Authentication required. Please log in again.');
+        navigate('/login');
+        return;
+      }
+
       const bookingData: BookingRequest = {
         roomId: id!,
         checkInDate: formData.checkInDate,
@@ -138,22 +147,32 @@ export default function BookingForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...getAuthHeader(),
+          ...authHeaders,
         },
         body: JSON.stringify(bookingData),
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setSuccess(true);
         setTimeout(() => {
           navigate('/my-bookings');
         }, 2000);
       } else {
-        setError(data.message || 'Failed to create booking');
+        // Handle specific authentication errors
+        if (response.status === 401) {
+          setError('Your session has expired. Please log in again.');
+          setTimeout(() => {
+            logout();
+            navigate('/login');
+          }, 2000);
+        } else {
+          setError(data.message || 'Failed to create booking');
+        }
       }
     } catch (err) {
+      console.error('Booking submission error:', err);
       setError('Network error. Please try again.');
     } finally {
       setSubmitting(false);
