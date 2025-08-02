@@ -241,8 +241,39 @@ export const createBooking: RequestHandler = (req: any, res) => {
 
   bookings.push(newBooking);
 
-  // Mark room as unavailable (in a real app, this would be more sophisticated)
+  // Mark room as unavailable
   room.isAvailable = false;
+
+  // Create a new room with the next available room number
+  const createNextRoom = (bookedRoom: Room) => {
+    const sameTypeRooms = rooms.filter(r => r.type === bookedRoom.type);
+    const maxRoomNumber = Math.max(...sameTypeRooms.map(r => parseInt(r.roomNumber)));
+    const nextRoomNumber = (maxRoomNumber + 1).toString();
+
+    // Generate next room ID
+    const maxRoomId = Math.max(...rooms.map(r => parseInt(r._id.replace('room-', ''))));
+    const nextRoomId = `room-${maxRoomId + 1}`;
+
+    const newRoom: Room = {
+      _id: nextRoomId,
+      roomNumber: nextRoomNumber,
+      type: bookedRoom.type,
+      price: bookedRoom.price,
+      amenities: [...bookedRoom.amenities],
+      maxOccupancy: bookedRoom.maxOccupancy,
+      isAvailable: true,
+      description: bookedRoom.description,
+      images: [...bookedRoom.images],
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+
+    rooms.push(newRoom);
+    return newRoom;
+  };
+
+  // Create the next available room
+  const nextRoom = createNextRoom(room);
 
   res.status(201).json({
     success: true,
