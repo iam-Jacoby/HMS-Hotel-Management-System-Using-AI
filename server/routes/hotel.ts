@@ -259,36 +259,9 @@ export const createBooking: RequestHandler = (req: any, res) => {
   // Mark room as unavailable
   room.isAvailable = false;
 
-  // Create a new room with the next available room number
-  const createNextRoom = (bookedRoom: Room) => {
-    const sameTypeRooms = rooms.filter(r => r.type === bookedRoom.type);
-    const maxRoomNumber = Math.max(...sameTypeRooms.map(r => parseInt(r.roomNumber)));
-    const nextRoomNumber = (maxRoomNumber + 1).toString();
-
-    // Generate next room ID
-    const maxRoomId = Math.max(...rooms.map(r => parseInt(r._id.replace('room-', ''))));
-    const nextRoomId = `room-${maxRoomId + 1}`;
-
-    const newRoom: Room = {
-      _id: nextRoomId,
-      roomNumber: nextRoomNumber,
-      type: bookedRoom.type,
-      price: bookedRoom.price,
-      amenities: [...bookedRoom.amenities],
-      maxOccupancy: bookedRoom.maxOccupancy,
-      isAvailable: true,
-      description: bookedRoom.description,
-      images: [...bookedRoom.images],
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-
-    rooms.push(newRoom);
-    return newRoom;
-  };
-
-  // Create the next available room
-  const nextRoom = createNextRoom(room);
+  // Don't create new rooms - we have a fixed inventory of 10 rooms per type
+  // Rooms are managed as a fixed pool with maximum limits:
+  // Single: 101-110, Double: 201-210, Suite: 301-310, Deluxe: 401-410
 
   res.status(201).json({
     success: true,
