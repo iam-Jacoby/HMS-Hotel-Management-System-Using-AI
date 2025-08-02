@@ -258,13 +258,15 @@ export default function Index() {
           {mobileMenuOpen && (
             <div className="md:hidden border-t dark:border-gray-700 py-4">
               <nav className="flex flex-col space-y-4">
-                <Link
-                  to="/"
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-2 py-1"
-                  onClick={() => setMobileMenuOpen(false)}
+                <button
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-2 py-1 text-left"
+                  onClick={() => {
+                    handleHomeClick();
+                    setMobileMenuOpen(false);
+                  }}
                 >
                   Home
-                </Link>
+                </button>
                 <Link
                   to="/about"
                   className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-2 py-1"
