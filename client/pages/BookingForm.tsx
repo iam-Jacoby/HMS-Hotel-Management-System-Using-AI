@@ -376,6 +376,7 @@ export default function BookingForm() {
                           value={formData.checkInDate}
                           onChange={(e) => setFormData(prev => ({ ...prev, checkInDate: e.target.value }))}
                           min={new Date().toISOString().split('T')[0]}
+                          className="dark:[color-scheme:dark]"
                           required
                         />
                       </div>
@@ -387,6 +388,7 @@ export default function BookingForm() {
                           value={formData.checkOutDate}
                           onChange={(e) => setFormData(prev => ({ ...prev, checkOutDate: e.target.value }))}
                           min={formData.checkInDate || new Date().toISOString().split('T')[0]}
+                          className="dark:[color-scheme:dark]"
                           required
                         />
                       </div>
