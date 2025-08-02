@@ -59,9 +59,71 @@ export default function AdminDashboard() {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   const handleLogout = () => {
     logout();
     navigate('/login');
+  };
+
+  const handleAddRoom = () => {
+    // Navigate to add room form or open modal
+    alert('Add New Room functionality - Coming Soon!');
+  };
+
+  const handleManageUsers = () => {
+    // Navigate to user management
+    alert('Manage Users functionality - Coming Soon!');
+  };
+
+  const handleSettings = () => {
+    // Navigate to settings
+    alert('Settings functionality - Coming Soon!');
+  };
+
+  const handleConfirmBooking = async (bookingId: string) => {
+    try {
+      const response = await fetch(`/api/bookings/${bookingId}/confirm`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAuthHeader(),
+        },
+      });
+
+      if (response.ok) {
+        // Refresh dashboard data
+        fetchDashboardStats();
+        alert('Booking confirmed successfully!');
+      } else {
+        alert('Failed to confirm booking');
+      }
+    } catch (error) {
+      alert('Error confirming booking');
+    }
+  };
+
+  const handleDeleteBooking = async (bookingId: string) => {
+    if (confirm('Are you sure you want to delete this booking?')) {
+      try {
+        const response = await fetch(`/api/bookings/${bookingId}`, {
+          method: 'DELETE',
+          headers: getAuthHeader(),
+        });
+
+        if (response.ok) {
+          // Refresh dashboard data
+          fetchDashboardStats();
+          alert('Booking deleted successfully!');
+        } else {
+          alert('Failed to delete booking');
+        }
+      } catch (error) {
+        alert('Error deleting booking');
+      }
+    }
   };
 
   if (loading) {
