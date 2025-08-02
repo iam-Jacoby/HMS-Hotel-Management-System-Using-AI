@@ -27,12 +27,23 @@ import {
 export default function BookingForm() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth();
+  const { user, logout, isAuthenticated } = useAuth();
+  const { theme, setTheme } = useTheme();
   const [room, setRoom] = useState<Room | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const [formData, setFormData] = useState({
     checkInDate: '',
