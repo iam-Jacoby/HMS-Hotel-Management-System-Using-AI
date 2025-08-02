@@ -247,44 +247,76 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Bookings */}
-        <Card>
+        <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardHeader>
-            <CardTitle>Recent Bookings</CardTitle>
-            <CardDescription>Latest booking activities</CardDescription>
+            <CardTitle className="text-gray-900 dark:text-white">Recent Bookings</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">Latest booking activities</CardDescription>
           </CardHeader>
           <CardContent>
             {stats?.recentBookings?.length ? (
               <div className="space-y-4">
                 {stats.recentBookings.map((booking) => (
-                  <div key={booking._id} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div key={booking._id} className="flex items-center justify-between p-4 border dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700">
                     <div className="space-y-1">
-                      <p className="text-sm font-medium">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">
                         Room {booking.room?.roomNumber} - {booking.room?.type}
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
                         {new Date(booking.checkInDate).toLocaleDateString()} - {new Date(booking.checkOutDate).toLocaleDateString()}
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
                         {booking.numberOfGuests} guest{booking.numberOfGuests > 1 ? 's' : ''}
                       </p>
                     </div>
-                    <div className="text-right space-y-1">
-                      <Badge 
-                        variant={
-                          booking.status === 'confirmed' ? 'default' :
-                          booking.status === 'pending' ? 'secondary' :
-                          booking.status === 'cancelled' ? 'destructive' : 'outline'
-                        }
-                      >
-                        {booking.status}
-                      </Badge>
-                      <p className="text-sm font-medium">${booking.totalAmount}</p>
+                    <div className="flex items-center space-x-3">
+                      <div className="text-right space-y-1">
+                        <Badge
+                          variant={
+                            booking.status === 'confirmed' ? 'default' :
+                            booking.status === 'pending' ? 'secondary' :
+                            booking.status === 'cancelled' ? 'destructive' : 'outline'
+                          }
+                        >
+                          {booking.status}
+                        </Badge>
+                        <p className="text-sm font-medium text-gray-900 dark:text-white">${booking.totalAmount}</p>
+                      </div>
+                      {booking.status === 'pending' && (
+                        <div className="flex space-x-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleConfirmBooking(booking._id)}
+                            className="text-green-600 hover:text-green-700 border-green-600 hover:border-green-700"
+                          >
+                            <Check className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteBooking(booking._id)}
+                            className="text-red-600 hover:text-red-700 border-red-600 hover:border-red-700"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      )}
+                      {booking.status !== 'pending' && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleDeleteBooking(booking._id)}
+                          className="text-red-600 hover:text-red-700 border-red-600 hover:border-red-700"
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-center text-muted-foreground py-8">
+              <p className="text-center text-gray-600 dark:text-gray-400 py-8">
                 No recent bookings found
               </p>
             )}
