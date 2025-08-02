@@ -47,9 +47,9 @@ export default function BookingForm() {
   };
 
   const [formData, setFormData] = useState({
-    checkInDate: '',
-    checkOutDate: '',
-    numberOfGuests: 1,
+    checkInDate: searchParams.get('checkIn') || '',
+    checkOutDate: searchParams.get('checkOut') || '',
+    numberOfGuests: parseInt(searchParams.get('guests') || '1'),
     specialRequests: ''
   });
 
