@@ -126,5 +126,9 @@ export function useAuth() {
 
 export const getAuthHeader = () => {
   const token = localStorage.getItem('token');
+  console.log('Getting auth header, token present:', !!token);
+  if (token) {
+    console.log('Token starts with:', token.substring(0, 20) + '...');
+  }
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
