@@ -300,7 +300,7 @@ export default function RoomDetails() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                   {room.description}
                 </p>
               </CardContent>
