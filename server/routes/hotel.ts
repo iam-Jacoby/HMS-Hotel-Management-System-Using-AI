@@ -94,7 +94,7 @@ let bookings: Booking[] = [
 
 export const getRooms: RequestHandler = (req, res) => {
   const query: RoomSearchQuery = req.query;
-  
+
   let filteredRooms = rooms;
 
   if (query.type) {
@@ -117,6 +117,21 @@ export const getRooms: RequestHandler = (req, res) => {
   if (query.checkIn && query.checkOut) {
     // For now, just return available rooms
     filteredRooms = filteredRooms.filter(room => room.isAvailable);
+  }
+
+  // For homepage display: return only one representative room per type (the first available one)
+  if (!query.type && !query.checkIn && !query.checkOut && !query.minPrice && !query.maxPrice && !query.guests) {
+    const roomTypes = ['single', 'double', 'suite', 'deluxe'];
+    const representativeRooms: Room[] = [];
+
+    roomTypes.forEach(type => {
+      const firstAvailableRoom = rooms.find(room => room.type === type && room.isAvailable);
+      if (firstAvailableRoom) {
+        representativeRooms.push(firstAvailableRoom);
+      }
+    });
+
+    filteredRooms = representativeRooms;
   }
 
   res.json({
