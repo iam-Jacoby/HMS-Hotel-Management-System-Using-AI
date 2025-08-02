@@ -440,9 +440,9 @@ export default function BookingForm() {
 
           {/* Booking Summary */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24">
+            <Card className="sticky top-24 dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
-                <CardTitle>Booking Summary</CardTitle>
+                <CardTitle className="text-gray-900 dark:text-white">Booking Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Room Info */}
