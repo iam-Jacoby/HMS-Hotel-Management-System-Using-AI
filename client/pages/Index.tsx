@@ -162,6 +162,13 @@ export default function Index() {
     navigate('/special-offers');
   };
 
+  const handleHomeClick = () => {
+    // Reset search query and fetch default rooms
+    setSearchQuery({});
+    setLoading(true);
+    fetchRooms(); // Fetch without any query to get default 4 cards
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
