@@ -1,24 +1,30 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
+import { useTheme } from '@/lib/theme';
 import { Room, ApiResponse } from '@shared/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Hotel, 
-  ArrowLeft, 
-  Users, 
-  Wifi, 
-  Coffee, 
-  Utensils, 
+import {
+  Hotel,
+  ArrowLeft,
+  Users,
+  Wifi,
+  Coffee,
+  Utensils,
   Car,
   Tv,
   Wind,
   Bath,
   Star,
-  Calendar
+  Calendar,
+  LogOut,
+  Sun,
+  Moon,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function RoomDetails() {
