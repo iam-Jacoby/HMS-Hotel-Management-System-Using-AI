@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth, getAuthHeader } from '@/lib/auth';
 import { useTheme } from '@/lib/theme';
 import { Room, ApiResponse, BookingRequest } from '@shared/api';
