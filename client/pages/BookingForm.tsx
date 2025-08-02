@@ -330,9 +330,9 @@ export default function BookingForm() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Booking Form */}
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
-                <CardTitle>Reservation Details</CardTitle>
+                <CardTitle className="text-gray-900 dark:text-white">Reservation Details</CardTitle>
                 <CardDescription>
                   Please fill in your booking information
                 </CardDescription>
