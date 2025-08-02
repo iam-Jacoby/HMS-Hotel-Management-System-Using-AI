@@ -11,7 +11,9 @@ import {
   deleteRoom,
   createBooking,
   getBookings,
-  getDashboardStats
+  getDashboardStats,
+  confirmBooking,
+  deleteBooking
 } from "./routes/hotel";
 
 declare global {
