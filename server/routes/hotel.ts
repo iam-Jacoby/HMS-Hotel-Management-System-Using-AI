@@ -326,3 +326,51 @@ export const getDashboardStats: RequestHandler = (req, res) => {
     data: stats
   } as ApiResponse<DashboardStats>);
 };
+
+export const confirmBooking: RequestHandler = (req: any, res) => {
+  const bookingIndex = bookings.findIndex(b => b._id === req.params.id);
+
+  if (bookingIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Booking not found"
+    } as ApiResponse);
+  }
+
+  // Update booking status
+  bookings[bookingIndex].status = "confirmed";
+  bookings[bookingIndex].updatedAt = new Date();
+
+  res.json({
+    success: true,
+    message: "Booking confirmed successfully",
+    data: bookings[bookingIndex]
+  } as ApiResponse<Booking>);
+};
+
+export const deleteBooking: RequestHandler = (req: any, res) => {
+  const bookingIndex = bookings.findIndex(b => b._id === req.params.id);
+
+  if (bookingIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: "Booking not found"
+    } as ApiResponse);
+  }
+
+  const booking = bookings[bookingIndex];
+
+  // Mark the room as available again
+  const room = rooms.find(r => r._id === booking.roomId);
+  if (room) {
+    room.isAvailable = true;
+  }
+
+  // Remove booking
+  bookings.splice(bookingIndex, 1);
+
+  res.json({
+    success: true,
+    message: "Booking deleted successfully"
+  } as ApiResponse);
+};
