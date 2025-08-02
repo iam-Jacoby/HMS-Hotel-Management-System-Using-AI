@@ -104,7 +104,7 @@ export default function RoomDetails() {
 
   if (error || !room) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
         <Alert variant="destructive" className="max-w-md">
           <AlertDescription>{error || 'Room not found'}</AlertDescription>
         </Alert>
