@@ -539,42 +539,42 @@ export default function Index() {
             <p className="text-lg text-gray-600 dark:text-gray-300">Exclusive deals and packages for your perfect getaway</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden flex flex-col h-full">
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2">Weekend Getaway</h3>
                 <p className="text-purple-100">Save 25% on weekend stays</p>
               </div>
-              <CardContent className="p-6">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <CardContent className="p-6 flex-1 flex flex-col">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
                   Perfect for romantic escapes and city breaks. Includes complimentary breakfast and late checkout.
                 </p>
-                <Button variant="outline" className="w-full" onClick={handleOfferClick}>Learn More</Button>
+                <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden flex flex-col h-full">
               <div className="bg-gradient-to-r from-green-500 to-teal-500 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2">Business Traveler</h3>
                 <p className="text-green-100">Extended stay discounts</p>
               </div>
-              <CardContent className="p-6">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <CardContent className="p-6 flex-1 flex flex-col">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
                   Stay 5+ nights and save up to 30%. Includes free WiFi, parking, and meeting room access.
                 </p>
-                <Button variant="outline" className="w-full" onClick={handleOfferClick}>Learn More</Button>
+                <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden">
+            <Card className="overflow-hidden flex flex-col h-full">
               <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2">Early Bird Special</h3>
                 <p className="text-orange-100">Book 30 days ahead</p>
               </div>
-              <CardContent className="p-6">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <CardContent className="p-6 flex-1 flex flex-col">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
                   Plan ahead and save 20% on your stay. Non-refundable rates with the best guaranteed prices.
                 </p>
-                <Button variant="outline" className="w-full" onClick={handleOfferClick}>Learn More</Button>
+                <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
               </CardContent>
             </Card>
           </div>
