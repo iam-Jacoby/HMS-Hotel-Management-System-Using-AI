@@ -117,6 +117,13 @@ export default function BookingForm() {
     e.preventDefault();
     setError('');
 
+    // Check if user is still authenticated
+    if (!isAuthenticated || !user) {
+      setError('Please log in to continue.');
+      navigate('/login');
+      return;
+    }
+
     const validationError = validateForm();
     if (validationError) {
       setError(validationError);
