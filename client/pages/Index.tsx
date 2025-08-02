@@ -362,6 +362,7 @@ export default function Index() {
                   type="date"
                   value={searchQuery.checkIn || ''}
                   onChange={(e) => setSearchQuery(prev => ({ ...prev, checkIn: e.target.value }))}
+                  className="dark:[color-scheme:dark]"
                 />
               </div>
               <div className="space-y-2">
@@ -371,6 +372,7 @@ export default function Index() {
                   type="date"
                   value={searchQuery.checkOut || ''}
                   onChange={(e) => setSearchQuery(prev => ({ ...prev, checkOut: e.target.value }))}
+                  className="dark:[color-scheme:dark]"
                 />
               </div>
               <div className="space-y-2">
