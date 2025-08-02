@@ -68,8 +68,8 @@ export default function Login() {
               <Hotel className="h-8 w-8" />
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold text-gray-900">Welcome Back</CardTitle>
-          <CardDescription className="text-gray-600">
+          <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Welcome Back</CardTitle>
+          <CardDescription className="text-gray-600 dark:text-gray-300">
             Sign in to your account to continue
           </CardDescription>
         </CardHeader>
