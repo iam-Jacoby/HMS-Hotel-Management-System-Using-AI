@@ -1,61 +1,81 @@
 import { RequestHandler } from "express";
 import { Room, Booking, DashboardStats, RoomSearchQuery, BookingRequest, ApiResponse } from "@shared/api";
 
-// Sample hotel data - in a real app, this would be in a database
-let rooms: Room[] = [
-  {
-    _id: "room-1",
-    roomNumber: "101",
-    type: "single",
-    price: 120,
-    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar"],
-    maxOccupancy: 1,
-    isAvailable: true,
-    description: "Comfortable single room perfect for solo travelers",
-    images: ["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=300&fit=crop"],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    _id: "room-2",
-    roomNumber: "201",
-    type: "double",
-    price: 180,
-    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service"],
-    maxOccupancy: 2,
-    isAvailable: true,
-    description: "Spacious double room with modern amenities",
-    images: ["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500&h=300&fit=crop"],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    _id: "room-3",
-    roomNumber: "301",
-    type: "suite",
-    price: 350,
-    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony"],
-    maxOccupancy: 4,
-    isAvailable: true,
-    description: "Luxury suite with premium amenities and stunning views",
-    images: ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop"],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    _id: "room-4",
-    roomNumber: "401",
-    type: "deluxe",
-    price: 500,
-    amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony", "Kitchen"],
-    maxOccupancy: 6,
-    isAvailable: false,
-    description: "Premium deluxe room with all luxury amenities",
-    images: ["https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=300&fit=crop"],
-    createdAt: new Date(),
-    updatedAt: new Date()
+// Function to generate rooms for each type
+const generateRooms = (): Room[] => {
+  const roomTypes = [
+    {
+      type: "single",
+      price: 120,
+      amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar"],
+      maxOccupancy: 1,
+      description: "Comfortable single room perfect for solo travelers",
+      images: ["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=300&fit=crop"],
+      floor: 1
+    },
+    {
+      type: "double",
+      price: 180,
+      amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service"],
+      maxOccupancy: 2,
+      description: "Spacious double room with modern amenities",
+      images: ["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500&h=300&fit=crop"],
+      floor: 2
+    },
+    {
+      type: "suite",
+      price: 350,
+      amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony"],
+      maxOccupancy: 4,
+      description: "Luxury suite with premium amenities and stunning views",
+      images: ["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=300&fit=crop"],
+      floor: 3
+    },
+    {
+      type: "deluxe",
+      price: 500,
+      amenities: ["WiFi", "TV", "Air Conditioning", "Mini Bar", "Room Service", "Jacuzzi", "Balcony", "Kitchen"],
+      maxOccupancy: 6,
+      description: "Premium deluxe room with all luxury amenities",
+      images: ["https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=300&fit=crop"],
+      floor: 4
+    }
+  ];
+
+  const generatedRooms: Room[] = [];
+  let roomIdCounter = 1;
+
+  roomTypes.forEach((roomType) => {
+    for (let i = 1; i <= 10; i++) {
+      const roomNumber = `${roomType.floor}${i.toString().padStart(2, '0')}`;
+      generatedRooms.push({
+        _id: `room-${roomIdCounter}`,
+        roomNumber,
+        type: roomType.type,
+        price: roomType.price,
+        amenities: roomType.amenities,
+        maxOccupancy: roomType.maxOccupancy,
+        isAvailable: true,
+        description: roomType.description,
+        images: roomType.images,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+      roomIdCounter++;
+    }
+  });
+
+  // Mark the original room-4 (now room-37) as unavailable
+  const room37 = generatedRooms.find(room => room._id === 'room-37');
+  if (room37) {
+    room37.isAvailable = false;
   }
-];
+
+  return generatedRooms;
+};
+
+// Sample hotel data - in a real app, this would be in a database
+let rooms: Room[] = generateRooms();
 
 let bookings: Booking[] = [
   {
