@@ -25,6 +25,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
