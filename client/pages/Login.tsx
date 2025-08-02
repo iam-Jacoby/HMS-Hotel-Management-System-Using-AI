@@ -15,9 +15,14 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
