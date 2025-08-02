@@ -134,9 +134,14 @@ export const register: RequestHandler = async (req, res) => {
 };
 
 export const verifyToken: RequestHandler = (req, res, next) => {
-  const token = req.headers.authorization?.replace("Bearer ", "");
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.replace("Bearer ", "");
+
+  console.log('Auth header:', authHeader);
+  console.log('Extracted token:', token ? 'Present' : 'Missing');
 
   if (!token) {
+    console.log('No token provided');
     return res.status(401).json({
       success: false,
       message: "Access token required"
@@ -145,9 +150,11 @@ export const verifyToken: RequestHandler = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as any;
+    console.log('Token verified for user:', decoded.userId);
     req.user = decoded;
     next();
   } catch (error) {
+    console.log('Token verification failed:', error);
     return res.status(401).json({
       success: false,
       message: "Invalid token"
