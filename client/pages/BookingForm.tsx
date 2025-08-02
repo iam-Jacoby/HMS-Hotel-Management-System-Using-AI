@@ -27,6 +27,7 @@ import {
 export default function BookingForm() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, logout, isAuthenticated } = useAuth();
   const { theme, setTheme } = useTheme();
   const [room, setRoom] = useState<Room | null>(null);
