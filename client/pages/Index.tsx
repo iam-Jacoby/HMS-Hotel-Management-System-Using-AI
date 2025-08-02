@@ -570,18 +570,20 @@ export default function Index() {
               </Card>
             </AnimatedCard>
 
-            <Card className="overflow-hidden flex flex-col h-full">
-              <div className="bg-gradient-to-r from-green-500 to-teal-500 p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">Business Traveler</h3>
-                <p className="text-green-100">Extended stay discounts</p>
-              </div>
-              <CardContent className="p-6 flex-1 flex flex-col">
-                <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
-                  Stay 5+ nights and save up to 30%. Includes free WiFi, parking, and meeting room access.
-                </p>
-                <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
-              </CardContent>
-            </Card>
+            <AnimatedCard animation="fadeInUp" delay={100}>
+              <Card className="overflow-hidden flex flex-col h-full">
+                <div className="bg-gradient-to-r from-green-500 to-teal-500 p-6 text-white">
+                  <h3 className="text-xl font-bold mb-2">Business Traveler</h3>
+                  <p className="text-green-100">Extended stay discounts</p>
+                </div>
+                <CardContent className="p-6 flex-1 flex flex-col">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 flex-1">
+                    Stay 5+ nights and save up to 30%. Includes free WiFi, parking, and meeting room access.
+                  </p>
+                  <Button variant="outline" className="w-full mt-auto" onClick={handleOfferClick}>Learn More</Button>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
 
             <Card className="overflow-hidden flex flex-col h-full">
               <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 text-white">
