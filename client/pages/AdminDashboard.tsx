@@ -197,51 +197,51 @@ export default function AdminDashboard() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Bookings</CardTitle>
-              <Calendar className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-gray-900 dark:text-white">Total Bookings</CardTitle>
+              <Calendar className="h-4 w-4 text-gray-600 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats?.totalBookings || 0}</div>
-              <p className="text-xs text-muted-foreground">All time bookings</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">{stats?.totalBookings || 0}</div>
+              <p className="text-xs text-gray-600 dark:text-gray-400">All time bookings</p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-gray-900 dark:text-white">Total Revenue</CardTitle>
+              <DollarSign className="h-4 w-4 text-gray-600 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${stats?.totalRevenue?.toLocaleString() || 0}</div>
-              <p className="text-xs text-muted-foreground">All time revenue</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">${stats?.totalRevenue?.toLocaleString() || 0}</div>
+              <p className="text-xs text-gray-600 dark:text-gray-400">All time revenue</p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Available Rooms</CardTitle>
-              <BedDouble className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-gray-900 dark:text-white">Available Rooms</CardTitle>
+              <BedDouble className="h-4 w-4 text-gray-600 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">
                 {stats?.availableRooms || 0}/{stats?.totalRooms || 0}
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 {Math.round(((stats?.availableRooms || 0) / (stats?.totalRooms || 1)) * 100)}% available
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="dark:bg-gray-800 dark:border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-gray-900 dark:text-white">Monthly Revenue</CardTitle>
+              <TrendingUp className="h-4 w-4 text-gray-600 dark:text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${stats?.monthlyRevenue?.toLocaleString() || 0}</div>
-              <p className="text-xs text-muted-foreground">Current month</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">${stats?.monthlyRevenue?.toLocaleString() || 0}</div>
+              <p className="text-xs text-gray-600 dark:text-gray-400">Current month</p>
             </CardContent>
           </Card>
         </div>
