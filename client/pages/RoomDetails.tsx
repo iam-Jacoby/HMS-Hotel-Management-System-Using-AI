@@ -327,7 +327,7 @@ export default function RoomDetails() {
             </Card>
 
             {/* Hotel Policies */}
-            <Card>
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
                 <CardTitle>Hotel Policies</CardTitle>
               </CardHeader>
