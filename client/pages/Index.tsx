@@ -464,8 +464,14 @@ export default function Index() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rooms.map((room) => (
-                <Card key={room._id} className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
+              {rooms.map((room, index) => (
+                <AnimatedCard
+                  key={room._id}
+                  animation="fadeInUp"
+                  delay={index * 100}
+                  className="h-full"
+                >
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
                   <div className="aspect-video bg-gray-200 relative">
                     <img
                       src={room.images[0] || "/placeholder.svg"}
@@ -535,7 +541,8 @@ export default function Index() {
                       )}
                     </div>
                   </CardContent>
-                </Card>
+                  </Card>
+                </AnimatedCard>
               ))}
             </div>
           )}
