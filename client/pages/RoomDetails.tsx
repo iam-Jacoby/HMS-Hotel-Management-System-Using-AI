@@ -307,7 +307,7 @@ export default function RoomDetails() {
             </Card>
 
             {/* Amenities */}
-            <Card>
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
                 <CardTitle>Room Amenities</CardTitle>
                 <CardDescription>Everything you need for a comfortable stay</CardDescription>
