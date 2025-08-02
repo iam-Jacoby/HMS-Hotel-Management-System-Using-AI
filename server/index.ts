@@ -60,6 +60,8 @@ export function createServer() {
   // Booking routes
   app.post("/api/bookings", verifyToken, createBooking);
   app.get("/api/bookings", verifyToken, getBookings);
+  app.patch("/api/bookings/:id/confirm", verifyToken, requireRole(['admin']), confirmBooking);
+  app.delete("/api/bookings/:id", verifyToken, requireRole(['admin']), deleteBooking);
 
   // Dashboard routes
   app.get("/api/dashboard/stats", verifyToken, requireRole(['admin']), getDashboardStats);
