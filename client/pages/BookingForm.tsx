@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAuth, getAuthHeader } from '@/lib/auth';
+import { useTheme } from '@/lib/theme';
 import { Room, ApiResponse, BookingRequest } from '@shared/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,13 +10,18 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  Hotel, 
-  ArrowLeft, 
-  Users, 
+import {
+  Hotel,
+  ArrowLeft,
+  Users,
   Calendar,
   CreditCard,
-  CheckCircle
+  CheckCircle,
+  LogOut,
+  Sun,
+  Moon,
+  Menu,
+  X
 } from 'lucide-react';
 
 export default function BookingForm() {
